@@ -3,8 +3,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
@@ -15,4 +15,50 @@ body {
 img {
   display: block;
   max-width: 100%;
+}
+
+/* ******* Color Switcher ******* */
+.container-color-switcher {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  font-size: 16px;
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(200, 200, 200, 0.95);
+  color: #444;
+  text-transform: uppercase;
+  height: 40px;
+}
+
+button:disabled {
+  color: #ddd;
+  opacity: 0.5;
+  border-color: rgba(200, 200, 200, 0.75);
+}
+
+/* ******* Timer ******* */
+.timer {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0px;
+}
+
+#datetime-picker {
+  height: 40px;
+  margin-right: 16px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid rgba(200, 200, 200, 0.95);
+}
+
+#datetime-picker + button {
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
 }

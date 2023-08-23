@@ -32,6 +32,7 @@ const options = {
     }
 }
 
+Notify.init({ position: "center-top", width: '360px', fontSize: '16px' })
 const datePicker = flatpickr("#datetime-picker", options)
 
 let intervalId = null;

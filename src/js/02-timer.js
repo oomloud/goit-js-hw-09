@@ -21,7 +21,7 @@ const options = {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
-    dateFormat: "J M, Y @ hh:m",
+    dateFormat: "J M, Y @ H:m",
     minuteIncrement: 5,
     onClose(selectedDates) {
         if (selectedDates[0].getTime() < new Date().getTime()) {

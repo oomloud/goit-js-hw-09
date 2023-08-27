@@ -63,4 +63,5 @@ Notify.init({
   position: 'right-top',
   width: '360px',
   fontSize: '16px',
+  useIcon: false,
 });

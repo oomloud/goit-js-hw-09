@@ -49,10 +49,18 @@ function coundownHandler(evt) {
         evt.target.textContent = "Stop"
         intervalId = setInterval(() => {
             const ms = datePicker.selectedDates[0] - new Date().getTime();
+            if (Math.round(ms / 1000) === 0) {
+                clearInterval(intervalId);
+                elements.btnStart.setAttribute('disabled', '')
+                evt.target.textContent = "Start";
+                evt.target.style.backgroundColor = "#1e90ff"
+            }
+            console.log('ms = ', Math.floor(ms / 1000));
             elements.days.textContent = addLeadingZero(convertMs(ms).days);
             elements.hours.textContent = addLeadingZero(convertMs(ms).hours);
             elements.minutes.textContent = addLeadingZero(convertMs(ms).minutes);
             elements.seconds.textContent = addLeadingZero(convertMs(ms).seconds);
+
         }, 1000)
     }
 }

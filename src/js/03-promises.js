@@ -2,29 +2,29 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const elements = {
   form: document.querySelector('.form'),
-  delay: document.querySelector('[name="delay"]'),
-  step: document.querySelector('[name="step"]'),
-  amount: document.querySelector('[name="amount"]'),
-  btnSubmit: document.querySelector('button'),
 };
+
+const { delay, step, amount } = elements.form.elements;
+
 let promiseCounter = 1;
-let cumulativeDelay = 0;
+let cumulativeDelay = 0; // variable to store cumulative response time (initial delay + step * number of steps)
 
 elements.form.addEventListener('submit', submitHandler);
 
 function submitHandler(evt) {
   evt.preventDefault();
-  cumulativeDelay = +elements.delay.value;
-
+  cumulativeDelay = +delay.value;
+  // setting initial delay for the first promice
   const timerId = setTimeout(() => {
+    //
     const intervalId = setInterval(() => {
-      if (promiseCounter === +elements.amount.value + 1) {
+      if (promiseCounter === +amount.value + 1) {
         clearInterval(intervalId);
         return;
       }
       const promise = createPromise(promiseCounter, cumulativeDelay);
       promiseCounter++;
-      cumulativeDelay += +elements.step.value;
+      cumulativeDelay += +step.value;
 
       promise
         .then(data => {
@@ -38,10 +38,10 @@ function submitHandler(evt) {
             `❌ Rejected promise ${err.position} in ${err.delay}ms`
           );
         });
-    }, +elements.step.value);
+    }, +step.value);
     // resetting counter of promises in case user wants to start again without refreshing the page
     promiseCounter = 1;
-  });
+  }, +delay.value);
 }
 
 function createPromise(position, delay) {
